@@ -1,0 +1,26 @@
+div id="cupsBrewed"></div>
+<div id="caffeineIntake"></div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDnc76REKppd3OP3GmMB6_RvWxdKTAv2pU",
+    authDomain: "feedbackcoffee-a7f8c.firebaseapp.com",
+    databaseURL: "https://feedbackcoffee-a7f8c-default-rtdb.firebaseio.com",
+    projectId: "feedbackcoffee-a7f8c",
+    storageBucket: "feedbackcoffee-a7f8c.appspot.com",
+    messagingSenderId: "154854701444",
+    appId: "1:154854701444:web:b0d638ea64bead0f3385d1",
+    measurementId: "G-JRRYDJ7V79"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  firebase.database().ref('/cupsBrewed').on('value', function(snapshot) {
+    document.getElementById('cupsBrewed').innerHTML = "Cups Brewed: " + snapshot.val();
+  });
+
+  firebase.database().ref('/caffeineIntake').on('value', function(snapshot) {
+    document.getElementById('caffeineIntake').innerHTML = "Caffeine Intake: " + snapshot.val() + "mg";
+  });
+</script>
